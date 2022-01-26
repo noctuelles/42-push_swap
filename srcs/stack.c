@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/01/26 16:14:05 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/01/26 16:25:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		check_stack_duplicate(t_stack stack, int nbr)
 	while (stack.content[i] != nbr)
 		i++;
 	stack.content[stack.top - 1] = save;
-	printf("%i\n", i);
 	if (i < (stack.top - 1) || stack.content[i] == nbr)
 		return (1);
 	else

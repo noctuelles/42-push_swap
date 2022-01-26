@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/01/26 16:14:06 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/01/26 16:36:33 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ void	push(t_stack *stack, int i);
 int		pop(t_stack *stack);
 
 /* operation.c */
+
+/* parsing.c */
+
+int		fill_stack_from_args(t_stack *stack, int argc, char **argv);
 
 #endif
