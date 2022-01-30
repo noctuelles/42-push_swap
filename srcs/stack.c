@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/01/26 16:25:41 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/01/30 00:47:09 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,4 @@ int		check_stack_duplicate(t_stack stack, int nbr)
 void	free_stack(t_stack stack)
 {
 	free(stack.content);
-}
-
-void	push(t_stack *stack, int i)
-{
-	stack->content[stack->top++] = i;
-}
-
-int	pop(t_stack *stack)
-{
-	if (stack->top != 0)
-		return(stack->content[(stack->top--) - 1]);
-	else
-		return (0);
 }
