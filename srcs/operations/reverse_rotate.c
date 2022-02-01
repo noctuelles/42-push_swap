@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 21:37:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 22:55:41 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 23:12:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rrb(t_data *data)
 
 	if (data->b.top < 2)
 		return ;
-	last_val = data->b.content[data->a.top - 1];
+	last_val = data->b.content[data->b.top - 1];
 	i = data->b.top - 2;
 	while (i >= 0)
 		swap_b(data, &last_val, &saved, &i);
@@ -78,16 +78,17 @@ void	rrr(t_data *data)
 	int		last_val;
 	int		saved;
 
-	if (data->a.top < 2)
-		return ;
-	last_val = data->a.content[data->a.top - 1];
-	i = data->a.top - 2;
-	while (i >= 0)
-		swap_a(data, &last_val, &saved, &i);
-	data->a.content[data->a.top - 1] = last_val;
+	if (data->a.top >= 2)
+	{
+		last_val = data->a.content[data->a.top - 1];
+		i = data->a.top - 2;
+		while (i >= 0)
+			swap_a(data, &last_val, &saved, &i);
+		data->a.content[data->a.top - 1] = last_val;
+	}
 	if (data->b.top < 2)
 		return ;
-	last_val = data->b.content[data->a.top - 1];
+	last_val = data->b.content[data->b.top - 1];
 	i = data->b.top - 2;
 	while (i >= 0)
 		swap_b(data, &last_val, &saved, &i);

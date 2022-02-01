@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 22:55:42 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 23:12:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ void	rr(t_data *data)
 	int		last_val;
 	int		saved;
 
-	if (data->a.top < 2)
-		return ;
-	last_val = data->a.content[0];
-	i = 1;
-	while (i < data->a.top)
-		swap_a(data, &last_val, &saved, &i);
-	data->a.content[0] = last_val;
+	if (data->a.top >= 2)
+	{
+		last_val = data->a.content[0];
+		i = 1;
+		while (i < data->a.top)
+			swap_a(data, &last_val, &saved, &i);
+		data->a.content[0] = last_val;
+	}
 	if (data->b.top < 2)
 		return ;
 	last_val = data->b.content[0];

@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 23:04:09 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 23:12:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	show_stacks(data);
 	do_op(&data, 3, pb);
 	show_stacks(data);
-	do_op(&data, 3, rrr);
+	do_op(&data, 2, rrr);
 	show_stacks(data);
 	free_stack(data.a);
 	free_stack(data.b);
