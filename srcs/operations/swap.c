@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:47:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 13:56:48 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 23:05:31 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	sa(t_data *data)
 	tmp = data->a.content[data->a.top - 1];
 	data->a.content[data->a.top - 1] = data->a.content[data->a.top - 2];
 	data->a.content[data->a.top - 2] = tmp;
-# ifndef SILENT_OUTPUT
 	write(STDOUT, STR_SA, sizeof(STR_SA) - 1);
-# endif
 }
 
 void	sb(t_data *data)
@@ -37,9 +35,7 @@ void	sb(t_data *data)
 	tmp = data->a.content[data->a.top - 1];
 	data->a.content[data->a.top - 1] = data->a.content[data->a.top - 2];
 	data->a.content[data->a.top - 2] = tmp;
-# ifndef SILENT_OUTPUT
 	write(STDOUT, STR_SB, sizeof(STR_SB) - 1);
-# endif
 }
 
 void	ss(t_data *data)
@@ -54,7 +50,5 @@ void	ss(t_data *data)
 	tmp = data->b.content[data->b.top - 1];
 	data->b.content[data->b.top - 1] = data->b.content[data->b.top - 2];
 	data->b.content[data->b.top - 2] = tmp;
-# ifndef SILENT_OUTPUT
 	write(STDOUT, STR_SS, sizeof(STR_SS) - 1);
-# endif
 }

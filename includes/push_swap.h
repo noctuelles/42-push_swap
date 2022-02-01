@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 14:46:30 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 22:21:38 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@
 # define STR_RB "rb\n"
 # define STR_RR "rr\n"
 
+# define STR_RRA "rra\n"
+# define STR_RRB "rrb\n"
+# define STR_RRR "rrr\n"
+
 # define STR_PA "pa\n"
 # define STR_PB "pb\n"
 
 # define STR_SA "sa\n"
 # define STR_SB "sb\n"
 # define STR_SS "ss\n"
+
 
 typedef struct s_stack
 {
@@ -53,6 +58,12 @@ int		check_stack_duplicate(t_stack stack, int nbr);
 void	rb(t_data *data);
 void	ra(t_data *data);
 void	rr(t_data *data);
+
+/* reverse_rotate.c */
+
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 
 /* push.c */
 

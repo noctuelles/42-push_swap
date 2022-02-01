@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/01 14:46:14 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/01 21:48:24 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,14 @@ OBJS_DIR	=	objs
 
 LIBFT_DIR	=	libft
 
-SRCS		=	main.c				\
-				parsing.c			\
-				stack.c				\
-				debug_tools.c		\
-				operations/rotate.c	\
-				operations/push.c	\
-				operations/swap.c	\
+SRCS		=	main.c						\
+				parsing.c					\
+				stack.c						\
+				debug_tools.c				\
+				operations/rotate.c			\
+				operations/reverse_rotate.c	\
+				operations/push.c			\
+				operations/swap.c			\
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

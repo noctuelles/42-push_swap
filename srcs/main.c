@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 14:45:27 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 23:04:09 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ static inline int	throw_error(t_data data)
 
 #include <stdio.h>
 
+void	do_op(t_data *data, size_t t, void (*f)(t_data *))
+{
+	size_t	i;
+
+	i = 0;
+	while (i++ < t)
+		f(data);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -34,7 +43,10 @@ int	main(int argc, char **argv)
 		return (throw_error(data));
 	if (fill_stack_from_args(&data.a, argc, argv) == -1)
 		return (throw_error(data));
-	pb(&data);
+	show_stacks(data);
+	do_op(&data, 3, pb);
+	show_stacks(data);
+	do_op(&data, 3, rrr);
 	show_stacks(data);
 	free_stack(data.a);
 	free_stack(data.b);
