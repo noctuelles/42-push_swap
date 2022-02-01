@@ -6,28 +6,27 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/01/26 16:36:33 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/01 14:14:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
 /* get_int_weight() returns how many digits they are in a number.
- * it adds one if the number is negative. */ 
+ * it adds one if the number is negative.
+ * So -12 gives 3 end result in get_int_digits function.
+ * 12 gives 2 end result in get_int_digits function. */ 
 
-static size_t	get_int_digits(int i)
+static inline size_t	get_int_digits(int i)
 {
 	size_t	digits;
 
-	if (i == 0)
-		return (1);
 	if (i < 0)
-		digits = 1;
+		digits = 2;
 	else
-		digits = 0;
-	while (i % 10 != 0)
+		digits = 1;
+	while (i / 10)
 	{
 		digits++;
 		i /= 10;
@@ -35,23 +34,56 @@ static size_t	get_int_digits(int i)
 	return (digits);
 }
 
+/*
+ * ft_strlen_skip_beg_zero() computes the lenght of the string without the
+ * zeroes at the beginning.
+ * The string "-000012" returns 3.
+ * The string "-12" returns 3.
+ * The string "-12000" returns 6.
+ */
+
+static size_t	ft_strlen_skip_beg_zero(const char *str)
+{
+	size_t	i;
+	size_t	len_no_zero;
+
+	i = 0;
+	len_no_zero = 0;
+	if (str[0] == '0' && str[1] == '\0')
+		return (1);
+	if (str[0] == '-')
+	{
+		i++;
+		len_no_zero++;
+	}
+	while (str[i] == '0')
+		i++;
+	while (str[i])
+	{
+		len_no_zero++;
+		i++;
+	}
+	return (len_no_zero);
+}
+
 /* is_integer returns() NULL if the int *i is not a correct integer.
  * It checks if the number of digits in the number match the len of the str-
- * -ing. */
+ * -ing (without beginning zero. */
 
-static int	*is_integer(const char *str, int *i)
+static inline int	*is_integer(const char *str, int *i)
 {
 	size_t	int_digits;
 
-	if (!isdigit(str[0]))
-			return (NULL);
 	int_digits = get_int_digits(*i);
-	if ((strlen(str) != int_digits))
+	if ((ft_strlen_skip_beg_zero(str) != int_digits))
 		return (NULL);
 	return (i);
 }
 
-/* fill_stack_from_args() is straightforward. */
+/* fill_stack_from_args() is straightforward. 
+ * It performs all the necessary check to see if the number is compatible with
+ * the subject requirements.
+ * */
 
 int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 {
@@ -61,7 +93,7 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 	n = 1;
 	while (n < argc)
 	{
-		i = atoi(argv[n]);
+		i = ft_atoi(argv[n]);
 		if (is_integer((const char *) argv[n], &i))
 		{
 			if (!check_stack_duplicate(*stack, i))
@@ -71,7 +103,7 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 		}
 		else
 			return (-1);
-		n++;	
+		n++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/01/30 00:44:00 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/01 14:46:14 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,17 @@ SRCS_DIR	=	srcs
 
 INC_DIR		=	includes
 
-OPS_DIR		=	$(INC_DIR)/operations
-
 OBJS_DIR	=	objs
 
 LIBFT_DIR	=	libft
 
-SRCS		=	main.c		\
-				parsing.c	\
-				stack.c
+SRCS		=	main.c				\
+				parsing.c			\
+				stack.c				\
+				debug_tools.c		\
+				operations/rotate.c	\
+				operations/push.c	\
+				operations/swap.c	\
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
@@ -32,12 +34,19 @@ RM			=	rm -rf
 
 CC			=	cc
 
-CFLAGS		=	-I $(INC_DIR) -I $(LIBFT_DIR) -I $(OPS_DIR)
+CFLAGS		=	-g3 -fsanitize=address -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
 
 CLIBS		=	-L . -lft
 
-$(NAME):		$(OBJS)
-				$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
+LIBFT		=	libft.a
+
+$(NAME):		$(LIBFT) $(OBJS)
+				$(CC) $(OBJS) $(CFLAGS) $(CLIBS) -o $(NAME)
+
+$(LIBFT):
+				$(MAKE) -C $(LIBFT_DIR) all
+				mv $(LIBFT_DIR)/$(LIBFT) .
+				$(MAKE) -C $(LIBFT_DIR) fclean
 
 $(OBJS_DIR)/%.o:$(SRCS_DIR)/%.c
 				@mkdir -p $(dir $@)
@@ -49,6 +58,7 @@ clean:
 				$(RM) $(OBJS_DIR)
 
 fclean:			clean
+				$(RM) $(LIBFT)
 				$(RM) $(NAME)
 
 re:				fclean all
