@@ -1,6 +1,8 @@
 # 42-push_swap
 
-![plates](assets/imgs/plates.png)
+<p align="center">
+  <img src="assets/imgs/plates.png" />
+</p>
 
 ## Table of contents
 
