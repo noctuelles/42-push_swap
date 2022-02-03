@@ -13,7 +13,7 @@ We can only use a limited set of instruction, which made this project tricky.
 
 You can implement a sorting algorithm or imagine / be inspired by another algorithm to make your own.
 
-## Advices <a name="advices"></a>
+## Disclaimer & Advices <a name="advices"></a>
 
 My first advices for this project is to **resist the temptation** of watching pre-existing *push_swap* project on Github.
 For me, the main purpose of this school is to *let go all the fear* of failing from standard school of discovering something completly new.
@@ -27,6 +27,14 @@ The web is amazing, but it made us lazy, and we're loosing the feeling of "the y
 I'll allow myself on this project to look on the web and inspire from other's work (on Github for example) after a long research of my own and different explaination. 
 
 Do whatever you want to do, but be aware of your own choices and their consequences, and your vision of **42**.
+
+<u>**Now the real advices :**</u>
+
+
+* The complexity of your algorithm is not computer-dependant : it's not the number of the instructions of the computer that matters, but the numbers of instructions of **your program** to sort a given list.
+Your *push_swap* could be bruteforce, carry out billions of if statements and while loop, we simply don't care.
+ **BUT** what we do care is how many instructions you used.
+
 
 ## My first naive approach <a name="first-approach"></a> 
 
