@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 21:37:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 23:12:35 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:14:56 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	rra(t_data *data)
 	while (i >= 0)
 		swap_a(data, &last_val, &saved, &i);
 	data->a.content[data->a.top - 1] = last_val;
+	data->nbr++;
 	write(STDOUT, STR_RRA, sizeof(STR_RRA) - 1);
 }
 
@@ -67,6 +68,7 @@ void	rrb(t_data *data)
 	while (i >= 0)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[data->b.top - 1] = last_val;
+	data->nbr++;
 	write(STDOUT, STR_RRB, sizeof(STR_RRB) - 1);
 }
 
@@ -93,5 +95,6 @@ void	rrr(t_data *data)
 	while (i >= 0)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[data->b.top - 1] = last_val;
+	data->nbr++;
 	write(STDOUT, STR_RRR, sizeof(STR_RRR) - 1);
 }

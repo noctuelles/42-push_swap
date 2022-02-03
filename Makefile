@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/01 21:48:24 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/02 17:36:19 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ RM			=	rm -rf
 
 CC			=	cc
 
-CFLAGS		=	-g3 -fsanitize=address -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
+CFLAGS		=	-g3 -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
 
 CLIBS		=	-L . -lft
 
@@ -59,7 +59,7 @@ clean:
 				$(RM) $(OBJS_DIR)
 
 fclean:			clean
-				$(RM) $(LIBFT)
+				#$(RM) $(LIBFT)
 				$(RM) $(NAME)
 
 re:				fclean all

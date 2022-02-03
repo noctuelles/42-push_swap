@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/01 22:21:38 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/02 19:36:25 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 typedef struct s_stack
 {
 	int		*content;
+	size_t	biggest_nbr_i;
 	size_t	top;
 }				t_stack;
 
@@ -45,6 +46,7 @@ typedef struct s_data
 {
 	t_stack	a;
 	t_stack	b;
+	size_t	nbr;
 }				t_data;
 
 /* stack.c */
@@ -82,11 +84,17 @@ void	show_stacks(t_data data);
 
 static inline void	push(t_stack *stack, int i)
 {
+	if (i > stack->content[stack->biggest_nbr_i])
+		stack->biggest_nbr_i = stack->top;
 	stack->content[stack->top++] = i;
 }
 
 static inline int	pop(t_stack *stack)
 {
+	size_t	i;
+	size_t	max;
+
+	i = 0;
 	if (stack->top != 0)
 		return(stack->content[(stack->top--) - 1]);
 	else

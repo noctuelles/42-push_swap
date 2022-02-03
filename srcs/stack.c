@@ -6,19 +6,21 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/01/30 00:47:09 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:26:05 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 #include <stdlib.h>
 
 t_stack	*alloc_stack(t_stack *stack, size_t stack_size)
 {
-	stack->content = (int *) calloc(stack_size, sizeof(int));
+	stack->content = (int *) ft_calloc(stack_size, sizeof(int));
 	if (!stack->content)
 		return (NULL);
 	stack->top = 0;
+	stack->biggest_nbr_i = 0;
 	return (stack);
 }
 
