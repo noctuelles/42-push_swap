@@ -9,7 +9,8 @@ You can implement a sorting algorithm or imagine / be inspired by another algori
 
 ## Advices
 
-My first advices for this project is to **resist the temptation** of watching pre-existing push_swap project on Github.
+My first advices for this project is to **resist the temptation** of watching pre-existing *push_swap* project on Github.
+For me, the main purpose of this school is to *let go all the fear* of failing from standard school of discovering something completly new.
 
 On the other hand, i highly recommand you to talk with your peers about their project (even if they watched something on the web about the project).
 This is far more interesting. Of course, looking on the web is also learning from your peers (if they're at 42), but i think you'll miss all the joy exchanging
@@ -19,7 +20,7 @@ The web is amazing, but it made us lazy, and we're loosing the feeling of "the y
 
 I'll allow myself on this project to look on the web and insprire from others after a long research of my own. 
 
-Do whatever you want to do, but be aware of your own choices and their consequences, and your vision of 42.
+Do whatever you want to do, but be aware of your own choices and their consequences, and your vision of **42**.
 
 ## My first naive approach
 
