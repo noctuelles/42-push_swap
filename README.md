@@ -13,8 +13,6 @@ We can only use a limited set of instruction, which made this project tricky.
 
 You can implement a sorting algorithm or imagine / be inspired by another algorithm to make your own.
 
-- [My first naive approach](#My-first-naive-approach)
-
 ## Advices <a name="advices"></a>
 
 My first advices for this project is to **resist the temptation** of watching pre-existing *push_swap* project on Github.
