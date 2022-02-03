@@ -1,6 +1,6 @@
 # 42-push_swap
 
-[plates](assets/imgs/plates.png)
+![plates](assets/imgs/plates.png)
 
 ## Table of contents
 
