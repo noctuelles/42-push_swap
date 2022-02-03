@@ -1,5 +1,7 @@
 # 42-push_swap
 
+[plates](assets/imgs/plates.png)
+
 ## Table of contents
 
 1. [The push_swap program](#push_swap)
