@@ -33,7 +33,7 @@ Do whatever you want to do, but be aware of your own choices and their consequen
 
 * The complexity of your algorithm is not computer-dependant : it's not the number of the instructions of the computer that matters, but the numbers of instructions of **your program** to sort a given list.
 Your *push_swap* could be bruteforce, carry out billions of if statements and while loop, we simply don't care.
- **BUT** what we do care is how many instructions you used.
+ What we do care is **how many *push_swap* instructions** your program used.
 
 
 ## My first naive approach <a name="first-approach"></a> 
