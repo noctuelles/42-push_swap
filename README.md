@@ -1,6 +1,9 @@
 # 42-push_swap
 
-<p align="center">
+<p align="left">
+  <img src="assets/imgs/plates.png" />
+</p>
+<p align="right">
   <img src="assets/imgs/plates.png" />
 </p>
 
