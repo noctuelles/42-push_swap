@@ -42,6 +42,10 @@ Do whatever you want to do, but be aware of your own choices and their consequen
 Your *push_swap* could be bruteforce, carry out billions of if statements and while loop, we simply don't care.
  What we do care is **how many *push_swap* instructions** your program used.
 
+* That being said, you can imagine a thousand way to make your *push_swap* faster. What about indexing your stack ? What about making groups of pre-sorted numbers ? The only limit is your creativity.
+
+* Learn about [sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm). I can recommand you an author : **Thomas H. Cormen**.
+
 
 ## My first naive approach <a name="first-approach"></a> 
 
