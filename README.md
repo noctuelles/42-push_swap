@@ -11,5 +11,5 @@ You can implement a sorting algorithm or imagine / be inspired by another algori
 
 This one is not effective at all.
 
-I can sort a set of 10 000 numbers in *12451813* operations, and a set of 100 numbers in *1447* operations.
+I can sort a set of 10 000 numbers in **12451813** operations, and a set of 100 numbers in **1447** operations.
 
