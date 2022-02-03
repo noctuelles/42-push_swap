@@ -19,7 +19,7 @@ The web is amazing, but it made us lazy, and we're loosing the feeling of "the y
 
 I'll allow myself on this project to look on the web and insprire from others after a long research of my own. 
 
-Do whatever you want to do, but be aware of your own choices and your perspective of 42.
+Do whatever you want to do, but be aware of your own choices and their consequences, and your vision of 42.
 
 ## My first naive approach
 
