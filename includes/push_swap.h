@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/02 19:36:25 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/05 18:21:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
+# include "libft.h"
 
 # define STR_ERROR "Error\n"
 
@@ -34,12 +35,25 @@
 # define STR_SB "sb\n"
 # define STR_SS "ss\n"
 
+typedef struct s_element
+{
+	int		value;
+	size_t	index;
+}				t_element;
+
+typedef struct s_content_info
+{
+	t_index	i;
+	t_bool	keep_in_stack;
+}				t_content_info;
 
 typedef struct s_stack
 {
-	int		*content;
-	size_t	biggest_nbr_i;
-	size_t	top;
+	int				*content;
+	t_content_info	*info;
+	t_index			top;
+	t_index			i_bigger;
+	t_index			i_smaller;
 }				t_stack;
 
 typedef struct s_data
@@ -47,13 +61,17 @@ typedef struct s_data
 	t_stack	a;
 	t_stack	b;
 	size_t	nbr;
+	t_list	*instructions;
 }				t_data;
+
+typedef void (*t_instruction)(t_data *);
 
 /* stack.c */
 
 t_stack	*alloc_stack(t_stack *stack, size_t stack_size);
 void	free_stack(t_stack stack);
 int		check_stack_duplicate(t_stack stack, int nbr);
+void	index_stack(t_stack *stack);
 
 /* rotate.c */
 
@@ -82,29 +100,29 @@ void	ss(t_data *data);
 
 void	show_stacks(t_data data);
 
+/* parsing.c */
+
+int		fill_stack_from_args(t_stack *stack, int argc, char **argv);
+
+/* instructions.c */
+
+
+void	launch_instructions(t_data *data);
+t_list	*add_instruction(t_data *data, t_instruction instruction);
+
+/* Recurrent functions. */
+
 static inline void	push(t_stack *stack, int i)
 {
-	if (i > stack->content[stack->biggest_nbr_i])
-		stack->biggest_nbr_i = stack->top;
 	stack->content[stack->top++] = i;
 }
 
 static inline int	pop(t_stack *stack)
 {
-	size_t	i;
-	size_t	max;
-
-	i = 0;
 	if (stack->top != 0)
 		return(stack->content[(stack->top--) - 1]);
 	else
 		return (0);
 }
-
-/* operation.c */
-
-/* parsing.c */
-
-int		fill_stack_from_args(t_stack *stack, int argc, char **argv);
 
 #endif

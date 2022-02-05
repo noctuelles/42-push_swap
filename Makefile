@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/02 17:36:19 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/05 18:16:33 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS		=	main.c						\
 				parsing.c					\
 				stack.c						\
 				debug_tools.c				\
+				instructions.c				\
 				operations/rotate.c			\
 				operations/reverse_rotate.c	\
 				operations/push.c			\

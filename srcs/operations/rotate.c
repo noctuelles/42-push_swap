@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/02 19:14:46 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/04 15:02:47 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	rr(t_data *data)
 			swap_a(data, &last_val, &saved, &i);
 		data->a.content[0] = last_val;
 	}
+	write(STDOUT, STR_RR, sizeof(STR_RR) - 1);
 	if (data->b.top < 2)
 		return ;
 	last_val = data->b.content[0];
@@ -96,5 +97,4 @@ void	rr(t_data *data)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[0] = last_val;
 	data->nbr++;
-	write(STDOUT, STR_RR, sizeof(STR_RR) - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/02 15:16:24 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/05 19:32:46 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,16 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 			if (!check_stack_duplicate(*stack, i))
 				push(stack, i);
 			else
+			{
+				puts("duplicate");
 				return (-1);
+			}
 		}
 		else
+		{
+			puts("invalid int.");
 			return (-1);
+		}
 		n--;
 	}
 	return (0);
