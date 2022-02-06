@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/05 18:26:05 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 12:19:31 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,9 @@
 #include <stdlib.h>
 
 t_stack	*alloc_stack(t_stack *stack, size_t stack_size) {
-	stack->content = (int *) ft_calloc(stack_size, sizeof(int));
+	stack->content = (t_content *) ft_calloc(stack_size, sizeof(t_content));
 	if (!stack->content)
 		return (NULL);
-	stack->info = (t_content_info *) malloc(stack_size *
-			sizeof(t_content_info));
-	if (!stack->info)
-	{
-		free(stack->content);
-		return (NULL);
-	}
 	stack->top = 0;
 	return (stack);
 }
@@ -39,13 +32,13 @@ int		check_stack_duplicate(t_stack stack, int nbr)
 
 	if (!stack.top)
 		return (0);
-	save = stack.content[stack.top - 1];
-	stack.content[stack.top - 1] = nbr;
+	save = stack.content[stack.top - 1].value;
+	stack.content[stack.top - 1].value = nbr;
 	i = 0;
-	while (stack.content[i] != nbr)
+	while (stack.content[i].value != nbr)
 		i++;
-	stack.content[stack.top - 1] = save;
-	if (i < (stack.top - 1) || stack.content[i] == nbr)
+	stack.content[stack.top - 1].value = save;
+	if (i < (stack.top - 1) || stack.content[i].value == nbr)
 		return (1);
 	else
 		return (0);
@@ -59,20 +52,18 @@ void	index_stack(t_stack *stack)
 {
 	t_index	i;
 	t_index	j;
-	t_index	sort_index;
 
 	i = 0;
 	while (i < stack->top)
 	{
 		j = 0;
-		sort_index = 0;
+		stack->content[i].sort_idx = 0;
 		while (j < stack->top)
 		{
-			if (stack->content[i] > stack->content[j])
-				sort_index++;
+			if (stack->content[i].value > stack->content[j].value)
+				stack->content[i].sort_idx++;
 			j++;
 		}
-		stack->info[i].i = sort_index;
 		i++;
 	}
 }

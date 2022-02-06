@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/05 18:21:35 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 12:27:56 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,18 @@
 # define STR_SB "sb\n"
 # define STR_SS "ss\n"
 
+typedef uint64_t t_index;
+
 typedef struct s_element
 {
 	int		value;
-	size_t	index;
+	t_index	sort_idx;
 }				t_element;
-
-typedef struct s_content_info
-{
-	t_index	i;
-	t_bool	keep_in_stack;
-}				t_content_info;
 
 typedef struct s_stack
 {
-	int				*content;
-	t_content_info	*info;
+	t_element	*content;
 	t_index			top;
-	t_index			i_bigger;
-	t_index			i_smaller;
 }				t_stack;
 
 typedef struct s_data
@@ -112,17 +105,19 @@ t_list	*add_instruction(t_data *data, t_instruction instruction);
 
 /* Recurrent functions. */
 
-static inline void	push(t_stack *stack, int i)
+static inline void	push(t_stack *stack, t_element elem)
 {
-	stack->content[stack->top++] = i;
+	stack->content[stack->top++] = elem;
 }
 
-static inline int	pop(t_stack *stack)
+static inline t_element	pop(t_stack *stack)
 {
+	t_element	empty;
+
 	if (stack->top != 0)
-		return(stack->content[(stack->top--) - 1]);
-	else
-		return (0);
+		return(stack->content[stack->top--]);
+	ft_memset(&empty, 0, sizeof(t_element));
+	return (empty);
 }
 
 #endif
