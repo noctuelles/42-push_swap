@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/05 19:32:46 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:19:33 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,26 +89,22 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 {
 	size_t	n;
 	int		i;
+	t_element	elem;
 
 	n = argc;
 	while (n > 1)
 	{
-		i = ft_atoi(argv[n - 1]);
-		if (is_integer((const char *) argv[n - 1], &i))
+		elem.value = ft_atoi(argv[n - 1]);
+		elem.sort_idx = 0;
+		if (is_integer((const char *) argv[n - 1], &elem.value))
 		{
 			if (!check_stack_duplicate(*stack, i))
-				push(stack, i);
+				push(stack, elem);
 			else
-			{
-				puts("duplicate");
 				return (-1);
-			}
 		}
 		else
-		{
-			puts("invalid int.");
 			return (-1);
-		}
 		n--;
 	}
 	return (0);

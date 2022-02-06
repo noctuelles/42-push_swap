@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/05 18:16:33 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/06 01:44:35 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,11 @@ SRCS		=	main.c						\
 				stack.c						\
 				debug_tools.c				\
 				instructions.c				\
+				sort/sort_small.c			\
 				operations/rotate.c			\
 				operations/reverse_rotate.c	\
 				operations/push.c			\
-				operations/swap.c			\
+				operations/swap.c
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

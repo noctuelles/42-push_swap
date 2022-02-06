@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:45:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 12:28:29 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:25:26 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	pa(t_data *data)
 	if (data->b.top < 1)
 		return ;
 	push(&data->a, pop(&data->b));
-	data->nbr++;
 	write(STDOUT, STR_PA, sizeof(STR_PA) - 1);
 }
 
@@ -28,6 +27,5 @@ void	pb(t_data *data)
 	if (data->a.top < 1)
 		return ;
 	push(&data->b, pop(&data->a));
-	data->nbr++;
 	write(STDOUT, STR_PB, sizeof(STR_PB) - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 01:18:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 03:17:26 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:18:19 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
  * 8
  *
  */
-
+/*
 void		sort_stack_three(t_data *data)
 {
 	int		*a_content;
@@ -144,4 +144,4 @@ void	sort_small_stack(t_data *data, size_t size)
 		if (data->a.content[0] > data->a.content[1])
 			sa(data);
 	}
-}
+}*/

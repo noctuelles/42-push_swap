@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 12:19:31 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:09:25 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 t_stack	*alloc_stack(t_stack *stack, size_t stack_size) {
-	stack->content = (t_content *) ft_calloc(stack_size, sizeof(t_content));
+	stack->content = (t_element *) ft_calloc(stack_size, sizeof(t_element));
 	if (!stack->content)
 		return (NULL);
 	stack->top = 0;

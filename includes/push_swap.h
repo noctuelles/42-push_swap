@@ -6,13 +6,12 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 12:27:56 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:43:17 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
 # include <stddef.h>
 # include "libft.h"
 
@@ -107,7 +106,10 @@ t_list	*add_instruction(t_data *data, t_instruction instruction);
 
 static inline void	push(t_stack *stack, t_element elem)
 {
-	stack->content[stack->top++] = elem;
+	printf("%d %ld\n", elem.value, elem.sort_idx);
+	stack->content[stack->top].value = elem.value;
+	stack->content[stack->top].sort_idx = elem.sort_idx;
+	stack->top++;
 }
 
 static inline t_element	pop(t_stack *stack)
@@ -115,9 +117,7 @@ static inline t_element	pop(t_stack *stack)
 	t_element	empty;
 
 	if (stack->top != 0)
-		return(stack->content[stack->top--]);
-	ft_memset(&empty, 0, sizeof(t_element));
-	return (empty);
+		return(stack->content[stack->top-- - 1]);
 }
 
 #endif

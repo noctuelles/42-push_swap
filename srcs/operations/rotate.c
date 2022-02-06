@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/04 15:02:47 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:04:12 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 /* These two inline function are only here to comply with the norms. */
 
-static inline void swap_a(t_data *data, int *last_val, int *saved, size_t *i)
+static inline void swap_a(t_data *data, t_element *last_val, t_element *saved,
+																	size_t *i)
 {
 	*saved = data->a.content[*i];
 	data->a.content[*i] = *last_val;
@@ -24,7 +25,8 @@ static inline void swap_a(t_data *data, int *last_val, int *saved, size_t *i)
 	(*i)++;
 }
 
-static inline void swap_b(t_data *data, int *last_val, int *saved, size_t *i)
+static inline void swap_b(t_data *data, t_element *last_val, t_element *saved,
+																	size_t *i)
 {
 	*saved = data->b.content[*i];
 	data->b.content[*i] = *last_val;
@@ -37,9 +39,9 @@ static inline void swap_b(t_data *data, int *last_val, int *saved, size_t *i)
 
 void	ra(t_data *data)
 {
-	size_t	i;
-	int		last_val;
-	int		saved;
+	size_t		i;
+	t_element	last_val;
+	t_element	saved;
 
 	if (data->a.top < 2)
 		return ;
@@ -57,9 +59,9 @@ void	ra(t_data *data)
 
 void	rb(t_data *data)
 {
-	size_t	i;
-	int		last_val;
-	int		saved;
+	size_t		i;
+	t_element	last_val;
+	t_element	saved;
 
 	if (data->b.top < 2)
 		return ;
@@ -76,9 +78,9 @@ void	rb(t_data *data)
 
 void	rr(t_data *data)
 {
-	size_t	i;
-	int		last_val;
-	int		saved;
+	size_t		i;
+	t_element	last_val;
+	t_element	saved;
 
 	if (data->a.top >= 2)
 	{

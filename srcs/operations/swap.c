@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:47:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/02 19:15:08 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:05:03 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	sa(t_data *data)
 {
-	int	tmp;
+	t_element	tmp;
 
 	if (data->a.top < 2)
 		return ;
@@ -29,7 +29,7 @@ void	sa(t_data *data)
 
 void	sb(t_data *data)
 {
-	int	tmp;
+	t_element	tmp;
 
 	if (data->a.top < 2)
 		return ;
@@ -42,7 +42,7 @@ void	sb(t_data *data)
 
 void	ss(t_data *data)
 {
-	int	tmp;
+	t_element	tmp;
 
 	if (data->a.top < 2 || data->b.top < 2)
 		return ;
