@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:19:33 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:47:43 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static inline int	*is_integer(const char *str, int *i)
 int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 {
 	size_t	n;
-	int		i;
 	t_element	elem;
 
 	n = argc;
@@ -98,7 +97,7 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 		elem.sort_idx = 0;
 		if (is_integer((const char *) argv[n - 1], &elem.value))
 		{
-			if (!check_stack_duplicate(*stack, i))
+			if (!check_stack_duplicate(*stack, elem.value))
 				push(stack, elem);
 			else
 				return (-1);

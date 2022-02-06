@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:43:17 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/06 16:48:09 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ t_list	*add_instruction(t_data *data, t_instruction instruction);
 
 static inline void	push(t_stack *stack, t_element elem)
 {
-	printf("%d %ld\n", elem.value, elem.sort_idx);
 	stack->content[stack->top].value = elem.value;
 	stack->content[stack->top].sort_idx = elem.sort_idx;
 	stack->top++;
@@ -114,8 +113,6 @@ static inline void	push(t_stack *stack, t_element elem)
 
 static inline t_element	pop(t_stack *stack)
 {
-	t_element	empty;
-
 	if (stack->top != 0)
 		return(stack->content[stack->top-- - 1]);
 }
