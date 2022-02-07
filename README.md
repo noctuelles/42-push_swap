@@ -46,6 +46,10 @@ Your *push_swap* could be bruteforce, carry out billions of if statements and wh
 
 * Learn about [sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm). I can recommand you an author : **Thomas H. Cormen**.
 
+This is a usefull bash script in order to generate random permutation of a sequence of numbers (require **GNU binutils**, you probably have it) :
+
+<details>
+  <summary>Bash script</summary>
 ```
 #!/bin/bash
 
@@ -67,6 +71,7 @@ fi
 
 seq $1 $2 | shuf | tr '\n' ' ' | sed -r 's/.$//'
 ```
+</details>
 
 ## My first naive approach <a name="first-approach"></a> 
 
