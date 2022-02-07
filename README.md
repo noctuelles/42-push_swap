@@ -48,8 +48,6 @@ Your *push_swap* could be bruteforce, carry out billions of if statements and wh
 
 This is a usefull bash script in order to generate random permutation of a sequence of numbers (require **GNU binutils**, you probably have it) :
 
-<details>
-  <summary>Bash script</summary>
   ```
   #!/bin/bash
   
@@ -71,7 +69,6 @@ This is a usefull bash script in order to generate random permutation of a seque
   
   seq $1 $2 | shuf | tr '\n' ' ' | sed -r 's/.$//'
   ```
-</details>
 
 ## My first naive approach <a name="first-approach"></a> 
 
