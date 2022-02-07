@@ -6,12 +6,12 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:48:09 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/07 19:51:45 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # include <stddef.h>
 # include "libft.h"
 
@@ -52,6 +52,7 @@ typedef struct s_data
 {
 	t_stack	a;
 	t_stack	b;
+	t_index	median;
 	size_t	nbr;
 	t_list	*instructions;
 }				t_data;
@@ -113,8 +114,12 @@ static inline void	push(t_stack *stack, t_element elem)
 
 static inline t_element	pop(t_stack *stack)
 {
+	t_element	empty;
+
 	if (stack->top != 0)
 		return(stack->content[stack->top-- - 1]);
+	ft_memset(&empty, 0, sizeof(t_element));
+	return (empty);
 }
 
 #endif

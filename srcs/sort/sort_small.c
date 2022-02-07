@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 01:18:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:18:19 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/07 19:51:40 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,89 +59,31 @@
  * 8
  *
  */
-/*
+
 void		sort_stack_three(t_data *data)
 {
-	int		*a_content;
+	t_element	*a_content;
 
 	a_content = data->a.content;
-	if (a_content[2] > a_content[1] && a_content[1] < a_content[0]
-			&& a_content[0] < a_content[2])
+	if (a_content[2].value > a_content[1].value && a_content[1].value < a_content[0].value
+			&& a_content[0].value < a_content[2].value)
 		ra(data);
-	else if (a_content[2] > a_content[1] && a_content[1] > a_content[0]
-			&& a_content[0] < a_content[2])
+	else if (a_content[2].value > a_content[1].value && a_content[1].value > a_content[0].value
+			&& a_content[0].value < a_content[2].value)
 	{
 		sa(data);
 		rra(data);
 	}
-	else if (a_content[2] > a_content[1] && a_content[1] < a_content[0]
-			&& a_content[0] > a_content[2])
+	else if (a_content[2].value > a_content[1].value && a_content[1].value < a_content[0].value
+			&& a_content[0].value > a_content[2].value)
 		sa(data);
-	else if (a_content[2] < a_content[1] && a_content[1] > a_content[0]
-			&& a_content[0] < a_content[2])
+	else if (a_content[2].value < a_content[1].value && a_content[1].value > a_content[0].value
+			&& a_content[0].value < a_content[2].value)
 		rra(data);
-	else if (a_content[2] < a_content[1] && a_content[1] > a_content[0]
-			&& a_content[0] > a_content[2])
+	else if (a_content[2].value < a_content[1].value && a_content[1].value > a_content[0].value
+			&& a_content[0].value > a_content[2].value)
 	{
 		rra(data);
 		sa(data);
 	}
 }
-
-int		is_min(t_stack *stack, int i)
-{
-	size_t	j;
-
-	j = 0;
-	while (j < stack->top)
-	{
-		if (stack->content[j] < i)
-			return (0);
-		j++;
-	}
-	return (1);
-}
-
-int		is_max(t_stack *stack, int i)
-{
-	size_t	j;
-
-	j = 0;
-	while (j < stack->top)
-	{
-		if (stack->content[j] > i)
-			return (0);
-		j++;
-	}
-	return (1);
-}
-
-void	sort_stack_five(t_data *data)
-{
-	pb(data);
-	pb(data);
-	sort_stack_three(data);
-	if (is_min(&data->a, data->b.content[1]))
-		pa(data);
-	else if (is_max(&data->a, data->b.content[1]))
-	{
-		pa(data);
-		ra(data);
-	}
-	if (is_min(&data->a, data->b.content[0]))
-		pa(data);
-	else if (is_max(&data->a, data->b.content[0]))
-	{
-		pa(data);
-		ra(data);
-	}
-}
-
-void	sort_small_stack(t_data *data, size_t size)
-{
-	if (size == 2)
-	{
-		if (data->a.content[0] > data->a.content[1])
-			sa(data);
-	}
-}*/

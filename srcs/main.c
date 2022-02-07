@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:31:01 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/07 19:51:40 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,38 @@ void	do_op(t_data *data, size_t t, void (*f)(t_data *))
 		f(data);
 }
 
+void	push_low_median(t_data *data)
+{
+	t_index	i;
+
+	i = 0;
+	//printf("median is %lu\n", data->median);
+	while (i <= data->median)
+	{
+		//show_stacks(*data);
+		//getchar();
+		if (data->a.content[data->a.top - 1].sort_idx <= data->median)
+		{
+			//printf("%lu <= %lu\n",data->a.content[data->a.top - 1].sort_idx, data->median);
+			pb(data);
+			i++;
+		}
+		else
+			ra(data);
+	}
+}
+
+void	push_high_median(t_data *data)
+{
+	while (data->a.top > 3)
+		pb(data);
+}
+
+size_t	get_stack_a_config_cost(t_element elem)
+{
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data = {0};
@@ -46,6 +78,11 @@ int	main(int argc, char **argv)
 	if (fill_stack_from_args(&data.a, argc, argv) == -1)
 		return (throw_error(data));
 	index_stack(&data.a);
+	data.median = data.a.top / 2 - 1;
+	printf("median is %lu\n", data.median);
+	push_low_median(&data);
+	push_high_median(&data);
+	sort_stack_three(&data);
 	show_stacks(data);
 	
 	char *line;
