@@ -6,11 +6,13 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/07 19:51:40 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/08 18:28:33 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
+#include "ft_printf.h"
 #include "libft.h"
 #include <stdlib.h>
 #include "push_swap.h"
@@ -65,7 +67,196 @@ void	push_high_median(t_data *data)
 
 size_t	get_stack_a_config_cost(t_element elem)
 {
+	
+}
 
+t_bool	is_in_between(int range_a, int range_b, int nbr)
+{
+	if (range_a < range_b)
+	{
+		if (nbr > range_a && nbr < range_b)
+			return (TRUE);
+	}
+	return (FALSE);
+}
+
+t_bool	is_smallest(t_data *data, t_element to_push)
+{
+	t_index	i;
+
+	i = 0;
+	while (i < data->a.top)
+	{
+		if (data->a.content[i].sort_idx < to_push.sort_idx)
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+t_bool	is_biggest(t_data *data, t_element to_push)
+{
+	t_index	i;
+
+	i = 0;
+	while (i < data->a.top)
+	{
+		if (data->a.content[i].sort_idx > to_push.sort_idx)
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+t_index	find_biggest_in_a(t_data *data)
+{
+	t_index	i;
+	int		biggest;
+	t_index	biggest_i;
+
+	i = 0;
+	biggest_i = 0;
+	biggest = data->a.content[i].value;
+	while (++i < data->a.top)
+	{
+		if (data->a.content[i].value > biggest)
+		{
+			biggest_i = i;
+			biggest = data->a.content[i].value;
+		}
+	}
+	return (biggest_i);
+}
+
+t_index	find_smallest_in_a(t_data *data)
+{
+	t_index	i;
+	int		smallest;
+	t_index	smallest_i;
+
+	i = 0;
+	smallest_i = 0;
+	smallest = data->a.content[i].value;
+	while (++i < data->a.top)
+	{
+		if (data->a.content[i].value < smallest)
+		{
+			smallest_i = i;
+			smallest = data->a.content[i].value;
+		}
+	}
+	return (smallest_i);
+}
+
+void	move_to_top(t_data *data, t_index idx, t_move *move)
+{
+	size_t	distance_from_top;
+
+	ft_printf("{33}Moving index %u to top.{0}\n", idx);
+	distance_from_top = (data->a.top - idx) - 1;
+	if (distance_from_top > data->a.top / 2)
+	{
+		distance_from_top = idx + 1;
+		move->instruction = rra;
+		ft_printf("{31}Instruction used will be RRA.{0}\n");
+	}
+	else
+	{
+		ft_printf("{31}Instruction used will be RA.{0}\n");
+		move->instruction = ra;
+	}
+	move->times = distance_from_top;
+	ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+}
+
+void	move_to_bottom(t_data *data, t_index idx, t_move *move)
+{
+	size_t	distance_from_bottom;
+
+	ft_printf("{34}Moving index %u to bottom.{0}\n", idx);
+	distance_from_bottom = idx;
+	if (distance_from_bottom < data->a.top / 2)
+	{
+		distance_from_bottom = data->a.top - idx;
+		move->instruction = ra;
+		ft_printf("{31}Instruction used will be RA.{0}\n");
+	}
+	else
+	{
+		ft_printf("{31}Instruction used will be RRA.{0}\n");
+		move->instruction = rra;
+	}
+	move->times = distance_from_bottom;
+	ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+}
+
+/* Returns what you must do in order to have the stack A ready to welcome the
+ * element to push. */
+
+t_move	prepare_stack_a(t_data *data, t_element to_push)
+{
+	t_index	i;
+	size_t	distance_from_top;
+	t_move	move;
+
+	i = data->a.top - 1;
+	distance_from_top = 0;
+	while (i > 0)
+	{
+		if (is_in_between(data->a.content[i].sort_idx,
+					data->a.content[i - 1].sort_idx, to_push.sort_idx))
+		{
+			move_to_top(data, i - 1, &move);
+			return (move);
+		}
+		i--;
+	}
+	if (i == 0)
+	{
+		if (is_in_between(data->a.content[0].sort_idx,
+					data->a.content[data->a.top - 1].sort_idx, to_push.sort_idx))
+		{
+			ft_printf("{36}Special case!{0}\nYou just have to push it man.");
+		}
+		else
+		{
+			if (is_biggest(data, to_push))
+			{
+				ft_printf("{35}The element to push will be the biggest of A.{0}\n");
+				t_index	idx = find_biggest_in_a(data);
+				if (idx != 0)
+				{
+					ft_printf("{35}Dam. The biggest element of A is not at the bottom.{0}\n");
+					move_to_bottom(data, idx, &move);
+				}
+				else
+				{
+					/* 
+					 * Here, we've to push and rotate.
+					 * */
+					ft_printf("{36}Do it yourself lazy boy.{0}\n");
+				}
+			}
+			else
+			{
+				ft_printf("{35}The element to push will be the smallest of A.{0}\n");
+				t_index	idx = find_smallest_in_a(data);
+				if (idx != data->a.top - 1)
+				{
+					ft_printf("{35}Dam. The smallest element of A is not at the top.{0}\n");
+					move_to_top(data, idx, &move);
+				}
+				else
+				{
+					/*
+					 * Here, we just have to push.
+					 */
+					ft_printf("{36}Do it yourself lazy boy.{0}\n");
+				}
+			}
+		}
+	}
+	return (move);
 }
 
 int	main(int argc, char **argv)
@@ -79,15 +270,16 @@ int	main(int argc, char **argv)
 		return (throw_error(data));
 	index_stack(&data.a);
 	data.median = data.a.top / 2 - 1;
-	printf("median is %lu\n", data.median);
 	push_low_median(&data);
 	push_high_median(&data);
 	sort_stack_three(&data);
+	t_move move = prepare_stack_a(&data, data.b.content[data.b.top - 1]);
 	show_stacks(data);
 	
 	char *line;
 	while ((line = get_next_line(0)))
 	{
+		t_move move = prepare_stack_a(&data, data.b.content[data.b.top - 1]);
 		if (strcmp(line, "ra\n") == 0)
 			ra(&data);
 		else if (strcmp(line, "rb\n") == 0)

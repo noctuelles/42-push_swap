@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/07 19:51:45 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/08 18:28:34 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -58,6 +58,13 @@ typedef struct s_data
 }				t_data;
 
 typedef void (*t_instruction)(t_data *);
+
+typedef struct s_move
+{
+	t_instruction	instruction;
+	size_t			times;
+	t_bool			after_push;
+}				t_move;
 
 /* stack.c */
 
