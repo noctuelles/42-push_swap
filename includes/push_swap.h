@@ -1,12 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */ /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/08 18:28:34 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 17:06:07 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -17,7 +16,7 @@
 
 # define STR_ERROR "Error\n"
 
-# define SILENT_OUTPUT 1
+//# define OUTPUT 1
 
 # define STR_RA "ra\n"
 # define STR_RB "rb\n"
@@ -54,6 +53,7 @@ typedef struct s_data
 	t_stack	b;
 	t_index	median;
 	size_t	nbr;
+	size_t	nbr2;
 	t_list	*instructions;
 }				t_data;
 
@@ -61,8 +61,11 @@ typedef void (*t_instruction)(t_data *);
 
 typedef struct s_move
 {
+	t_index			idx;
 	t_instruction	instruction;
 	size_t			times;
+	t_instruction	instruction_b;
+	size_t			times_b;
 	t_bool			after_push;
 }				t_move;
 

@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:04:12 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:51:16 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	ra(t_data *data)
 		swap_a(data, &last_val, &saved, &i);
 	data->a.content[0] = last_val;
 	data->nbr++;
+	add_instruction(data, ra);
+#ifdef OUTPUT
 	write(STDOUT, STR_RA, sizeof(STR_RA) - 1);
+#endif
 }
 
 /* Rotate the stack b. Shift up all elements by 1. The first element becomes
@@ -71,7 +74,10 @@ void	rb(t_data *data)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[0] = last_val;
 	data->nbr++;
+	add_instruction(data, rb);
+#ifdef OUTPUT
 	write(STDOUT, STR_RB, sizeof(STR_RB) - 1);
+#endif
 }
 
 /* Do ra and rb at the same time. */

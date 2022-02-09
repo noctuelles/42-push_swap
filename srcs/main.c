@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/08 18:28:33 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:57:38 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,62 +152,88 @@ void	move_to_top(t_data *data, t_index idx, t_move *move)
 {
 	size_t	distance_from_top;
 
-	ft_printf("{33}Moving index %u to top.{0}\n", idx);
+	//ft_printf("{33}Moving index %u to top.{0}\n", idx);
 	distance_from_top = (data->a.top - idx) - 1;
 	if (distance_from_top > data->a.top / 2)
 	{
 		distance_from_top = idx + 1;
 		move->instruction = rra;
-		ft_printf("{31}Instruction used will be RRA.{0}\n");
+		//ft_printf("{31}Instruction used will be RRA.{0}\n");
 	}
 	else
 	{
-		ft_printf("{31}Instruction used will be RA.{0}\n");
+		//ft_printf("{31}Instruction used will be RA.{0}\n");
 		move->instruction = ra;
 	}
 	move->times = distance_from_top;
-	ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+	//ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+}
+
+void	move_to_top_b(t_data *data, t_index idx, t_move *move)
+{
+	size_t	distance_from_top;
+
+	//ft_printf("{33}Moving index %u to top.{0}\n", idx);
+	distance_from_top = (data->b.top - idx) - 1;
+	if (distance_from_top > data->b.top / 2)
+	{
+		distance_from_top = idx + 1;
+		move->instruction_b = rrb;
+		//ft_printf("{31}Instruction used will be RRA.{0}\n");
+	}
+	else
+	{
+		//ft_printf("{31}Instruction used will be RA.{0}\n");
+		move->instruction_b = rb;
+	}
+	move->times_b = distance_from_top;
+	//ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
 }
 
 void	move_to_bottom(t_data *data, t_index idx, t_move *move)
 {
 	size_t	distance_from_bottom;
 
-	ft_printf("{34}Moving index %u to bottom.{0}\n", idx);
+	//ft_printf("{34}Moving index %u to bottom.{0}\n", idx);
 	distance_from_bottom = idx;
 	if (distance_from_bottom < data->a.top / 2)
 	{
 		distance_from_bottom = data->a.top - idx;
 		move->instruction = ra;
-		ft_printf("{31}Instruction used will be RA.{0}\n");
+		//ft_printf("{31}Instruction used will be RA.{0}\n");
 	}
 	else
 	{
-		ft_printf("{31}Instruction used will be RRA.{0}\n");
+		//ft_printf("{31}Instruction used will be RRA.{0}\n");
 		move->instruction = rra;
 	}
 	move->times = distance_from_bottom;
-	ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+	//ft_printf("{32}You will use this instruction %u times.{0}\n\n", move->times);
+}
+
+t_move	prepare_stack_b(t_data *data, t_element to_push)
+{
+
 }
 
 /* Returns what you must do in order to have the stack A ready to welcome the
  * element to push. */
 
-t_move	prepare_stack_a(t_data *data, t_element to_push)
+t_move	prepare_stack_a(t_data *data, t_element to_push, t_move *move)
 {
 	t_index	i;
 	size_t	distance_from_top;
-	t_move	move;
 
 	i = data->a.top - 1;
 	distance_from_top = 0;
+	move->after_push = 0;
 	while (i > 0)
 	{
 		if (is_in_between(data->a.content[i].sort_idx,
 					data->a.content[i - 1].sort_idx, to_push.sort_idx))
 		{
-			move_to_top(data, i - 1, &move);
-			return (move);
+			move_to_top(data, i - 1, move);
+			return (*move);
 		}
 		i--;
 	}
@@ -216,47 +242,54 @@ t_move	prepare_stack_a(t_data *data, t_element to_push)
 		if (is_in_between(data->a.content[0].sort_idx,
 					data->a.content[data->a.top - 1].sort_idx, to_push.sort_idx))
 		{
-			ft_printf("{36}Special case!{0}\nYou just have to push it man.");
+			move->instruction = pa;
+			move->times = 1;
+			//ft_printf("{36}Special case!{0}\nYou just have to push it man.");
 		}
 		else
 		{
 			if (is_biggest(data, to_push))
 			{
-				ft_printf("{35}The element to push will be the biggest of A.{0}\n");
+				//ft_printf("{35}The element to push will be the biggest of A.{0}\n");
 				t_index	idx = find_biggest_in_a(data);
 				if (idx != 0)
 				{
-					ft_printf("{35}Dam. The biggest element of A is not at the bottom.{0}\n");
-					move_to_bottom(data, idx, &move);
+					//ft_printf("{35}Dam. The biggest element of A is not at the bottom.{0}\n");
+					move_to_bottom(data, idx, move);
 				}
 				else
 				{
 					/* 
 					 * Here, we've to push and rotate.
 					 * */
-					ft_printf("{36}Do it yourself lazy boy.{0}\n");
+					move->instruction = ra;
+					move->after_push = 1;
+					move->times = 1;
+					//ft_printf("{36}Do it yourself lazy boy.{0}\n");
 				}
 			}
 			else
 			{
-				ft_printf("{35}The element to push will be the smallest of A.{0}\n");
+				//ft_printf("{35}The element to push will be the smallest of A.{0}\n");
 				t_index	idx = find_smallest_in_a(data);
 				if (idx != data->a.top - 1)
 				{
-					ft_printf("{35}Dam. The smallest element of A is not at the top.{0}\n");
-					move_to_top(data, idx, &move);
+					//ft_printf("{35}Dam. The smallest element of A is not at the top.{0}\n");
+					move_to_top(data, idx, move);
 				}
 				else
 				{
 					/*
 					 * Here, we just have to push.
 					 */
-					ft_printf("{36}Do it yourself lazy boy.{0}\n");
+					move->instruction = pa;
+					move->times = 1;
+					//ft_printf("{36}Do it yourself lazy boy.{0}\n");
 				}
 			}
 		}
 	}
-	return (move);
+	return (*move);
 }
 
 int	main(int argc, char **argv)
@@ -268,15 +301,63 @@ int	main(int argc, char **argv)
 		return (throw_error(data));
 	if (fill_stack_from_args(&data.a, argc, argv) == -1)
 		return (throw_error(data));
+
 	index_stack(&data.a);
+
 	data.median = data.a.top / 2 - 1;
 	push_low_median(&data);
 	push_high_median(&data);
 	sort_stack_three(&data);
-	t_move move = prepare_stack_a(&data, data.b.content[data.b.top - 1]);
-	show_stacks(data);
+	//show_stacks(data);
 	
-	char *line;
+	while (data.b.top)
+	{
+		ssize_t	i;
+		t_move	best_move;
+
+		best_move.times = 99999;
+		best_move.times_b = 99999;
+		i = data.b.top - 1;
+		while (i >= 0)
+		{
+			t_move		current_move;
+			t_element	temp;
+
+			current_move.idx = i;
+
+			temp = data.b.content[data.b.top - 1];
+
+			move_to_top_b(&data, i, &current_move);
+			data.b.content[data.b.top - 1] = data.b.content[i];
+			prepare_stack_a(&data, data.b.content[data.b.top - 1], &current_move);
+
+			data.b.content[data.b.top - 1] = temp;
+			if ((current_move.times + current_move.times_b) < (best_move.times + best_move.times_b))
+			{
+				best_move = current_move;
+			}
+			i--;
+		}
+		do_op(&data, best_move.times_b, best_move.instruction_b);
+		if (best_move.after_push)
+		{
+			pa(&data);
+			ra(&data);
+		}
+		else
+		{
+			do_op(&data, best_move.times, best_move.instruction);
+			if (best_move.instruction != pa)
+				pa(&data);
+		}
+	}
+	t_move	move;
+	t_index	idx = find_smallest_in_a(&data);
+	move_to_top(&data, idx, &move);
+	do_op(&data, move.times, move.instruction);
+	//ft_putstr("\n");
+	launch_instructions(&data);
+	/*char *line;
 	while ((line = get_next_line(0)))
 	{
 		t_move move = prepare_stack_a(&data, data.b.content[data.b.top - 1]);
@@ -304,10 +385,12 @@ int	main(int argc, char **argv)
 			pb(&data);
 		show_stacks(data);
 		free(line);
-	}
+	}*/
 
+	//show_stacks(data);
 	free_stack(data.a);
 	free_stack(data.b);
-	printf("OK in %zu operations.\n", data.nbr);
+	//printf("OK in %zu operations.\n", data.nbr);
+	//printf("OK in %zu operations with improvements.\n", data.nbr2);
 	return (0);
 }

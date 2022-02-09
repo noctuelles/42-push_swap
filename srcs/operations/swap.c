@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:47:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:05:03 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:51:14 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	sa(t_data *data)
 	data->a.content[data->a.top - 1] = data->a.content[data->a.top - 2];
 	data->a.content[data->a.top - 2] = tmp;
 	data->nbr++;
+	add_instruction(data, sa);
+#ifdef OUTPUT
 	write(STDOUT, STR_SA, sizeof(STR_SA) - 1);
+#endif
 }
 
 void	sb(t_data *data)
@@ -37,7 +40,10 @@ void	sb(t_data *data)
 	data->a.content[data->a.top - 1] = data->a.content[data->a.top - 2];
 	data->a.content[data->a.top - 2] = tmp;
 	data->nbr++;
+	add_instruction(data, sb);
+#ifdef OUTPUT
 	write(STDOUT, STR_SB, sizeof(STR_SB) - 1);
+#endif
 }
 
 void	ss(t_data *data)

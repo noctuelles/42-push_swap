@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 21:37:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:04:37 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:51:12 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	rra(t_data *data)
 		swap_a(data, &last_val, &saved, &i);
 	data->a.content[data->a.top - 1] = last_val;
 	data->nbr++;
+	add_instruction(data, rra);
+#ifdef OUTPUT
 	write(STDOUT, STR_RRA, sizeof(STR_RRA) - 1);
+#endif
 }
 
 /* Reverse rotate the stack b. Shift down all elements by 1. The last element
@@ -71,7 +74,10 @@ void	rrb(t_data *data)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[data->b.top - 1] = last_val;
 	data->nbr++;
+	add_instruction(data, rrb);
+#ifdef OUTPUT
 	write(STDOUT, STR_RRB, sizeof(STR_RRB) - 1);
+#endif
 }
 
 /* Do rra and rrb at the same time. */
