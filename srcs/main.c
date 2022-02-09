@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/09 16:57:38 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/09 19:37:02 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void	move_to_bottom(t_data *data, t_index idx, t_move *move)
 
 	//ft_printf("{34}Moving index %u to bottom.{0}\n", idx);
 	distance_from_bottom = idx;
-	if (distance_from_bottom < data->a.top / 2)
+	if (distance_from_bottom > data->a.top / 2)
 	{
 		distance_from_bottom = data->a.top - idx;
 		move->instruction = ra;
@@ -351,6 +351,24 @@ int	main(int argc, char **argv)
 				pa(&data);
 		}
 	}
+	/*while (data.b.top)
+	{
+		t_move	move;
+
+		prepare_stack_a(&data, data.b.content[data.b.top - 1], &move);
+		if (move.after_push)
+		{
+			pa(&data);
+			ra(&data);
+		}
+		else
+		{
+			do_op(&data, move.times, move.instruction);
+			if (move.instruction != pa)
+				pa(&data);
+		}
+	}*/
+	//ft_putstr("\n");
 	t_move	move;
 	t_index	idx = find_smallest_in_a(&data);
 	move_to_top(&data, idx, &move);
@@ -390,7 +408,7 @@ int	main(int argc, char **argv)
 	//show_stacks(data);
 	free_stack(data.a);
 	free_stack(data.b);
-	//printf("OK in %zu operations.\n", data.nbr);
-	//printf("OK in %zu operations with improvements.\n", data.nbr2);
+	//printf("OK in %zu opertions.\n", data.nbr);
+	//printf("OK in %zu opertions with improvements.\n", data.nbr2);
 	return (0);
 }

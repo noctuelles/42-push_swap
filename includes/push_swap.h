@@ -62,10 +62,15 @@ typedef void (*t_instruction)(t_data *);
 typedef struct s_move
 {
 	t_index			idx;
-	t_instruction	instruction;
-	size_t			times;
 	t_instruction	instruction_b;
 	size_t			times_b;
+	t_instruction	instruction;
+	size_t			times;
+
+	t_instruction	stack_a_inst;
+	size_t			stack_a_inst_rpt;
+	t_instruction	stack_b_inst;
+	size_t			stack_b_inst_rpt;
 	t_bool			after_push;
 }				t_move;
 
