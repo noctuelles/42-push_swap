@@ -33,8 +33,6 @@
 # define STR_SB "sb\n"
 # define STR_SS "ss\n"
 
-typedef uint64_t t_index;
-
 typedef struct s_element
 {
 	int		value;
@@ -51,7 +49,6 @@ typedef struct s_data
 {
 	t_stack	a;
 	t_stack	b;
-	t_index	median;
 	size_t	nbr;
 	size_t	nbr2;
 	t_list	*instructions;
@@ -77,9 +74,18 @@ typedef struct s_move
 /* stack.c */
 
 t_stack	*alloc_stack(t_stack *stack, size_t stack_size);
-void	free_stack(t_stack stack);
 int		check_stack_duplicate(t_stack stack, int nbr);
+t_bool	is_stack_sorted(t_stack stack);
+void	free_stacks(t_data *data);
+
+/* sort/sort_helper.c */
+
+void	sort_three_elem_stack(t_data *data);
+
+/* sort/sort_init.c */
+
 void	index_stack(t_stack *stack);
+void	init_stacks(t_data *data);
 
 /* rotate.c */
 

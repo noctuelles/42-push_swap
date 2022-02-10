@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/06 16:09:25 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/10 19:08:57 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,24 @@ int		check_stack_duplicate(t_stack stack, int nbr)
 		return (0);
 }
 
-/* index_stack() gives for each element in the given stack, based on their order
- * sort order.
- * Information are hold in the info structure. */
-
-void	index_stack(t_stack *stack)
+t_bool	is_stack_sorted(t_stack stack)
 {
 	t_index	i;
-	t_index	j;
 
-	i = 0;
-	while (i < stack->top)
+	i = stack.top;
+	while (i > 1)
 	{
-		j = 0;
-		stack->content[i].sort_idx = 0;
-		while (j < stack->top)
-		{
-			if (stack->content[i].value > stack->content[j].value)
-				stack->content[i].sort_idx++;
-			j++;
-		}
-		i++;
+		if (stack.content[i - 1].value > stack.content[i - 2].value)
+			return (FALSE);
+		i--;
 	}
+	return (TRUE);
 }
 
-void	free_stack(t_stack stack)
+void	free_stacks(t_data *data)
 {
-	free(stack.content);
+	free(data->a.content);
+	data->a.content = NULL;
+	free(data->b.content);
+	data->b.content = NULL;
 }
