@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/11 18:08:36 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/11 18:39:55 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,7 @@ RM			=	rm -rf
 
 CC			=	cc
 
-DEBUG		=	-g3 -fsanitize=address
-
-CFLAGS		=	-Wall -Werror -Wextra $(DEBUG) -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
+CFLAGS		=	-Wall -Werror -Wextra -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
 
 CLIBS		=	-L . -lft
 
@@ -69,7 +67,7 @@ clean:
 				$(RM) $(OBJS_DIR)
 
 fclean:			clean
-				#$(RM) $(LIBFT)
+				$(RM) $(LIBFT)
 				$(RM) $(NAME)
 
 re:				fclean all
