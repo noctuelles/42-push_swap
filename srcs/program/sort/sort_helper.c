@@ -6,11 +6,20 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 01:18:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/10 19:08:56 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 17:51:08 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	do_op(t_data *data, void (*inst)(t_data *), size_t rpt)
+{
+	size_t	i;
+
+	i = 0;
+	while (i++ < rpt)
+		inst(data);
+}
 
 static inline t_bool	bigger_than(t_data *data, t_index idx1, t_index idx2)
 {
@@ -28,7 +37,7 @@ static inline t_bool	less_than(t_data *data, t_index idx1, t_index idx2)
 		return (FALSE);
 }
 
-void		sort_three_elem_stack(t_data *data)
+void	sort_three_elem_stack(t_data *data)
 {
 	if (bigger_than(data, 2, 1) && less_than(data, 1, 0)
 			&& less_than(data, 0, 2))
@@ -51,4 +60,15 @@ void		sort_three_elem_stack(t_data *data)
 		rra(data);
 		sa(data);
 	}
+}
+
+void	sort_small_stack(t_data *data, int argc)
+{
+	if (argc == 3)
+	{
+		if (bigger_than(data, 1, 0))
+			sa(data);
+	}
+	if (argc == 4)
+		sort_three_elem_stack(data);
 }

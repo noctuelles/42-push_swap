@@ -6,13 +6,12 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/09 16:51:16 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 16:52:54 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include <unistd.h>
+#include <stdlib.h>
 
 /* These two inline function are only here to comply with the norms. */
 
@@ -50,11 +49,8 @@ void	ra(t_data *data)
 	while (i < data->a.top)
 		swap_a(data, &last_val, &saved, &i);
 	data->a.content[0] = last_val;
-	data->nbr++;
-	add_instruction(data, ra);
-#ifdef OUTPUT
-	write(STDOUT, STR_RA, sizeof(STR_RA) - 1);
-#endif
+	if (!add_instruction(data, ra))
+		exit(throw_error(data));
 }
 
 /* Rotate the stack b. Shift up all elements by 1. The first element becomes
@@ -73,36 +69,6 @@ void	rb(t_data *data)
 	while (i < data->b.top)
 		swap_b(data, &last_val, &saved, &i);
 	data->b.content[0] = last_val;
-	data->nbr++;
-	add_instruction(data, rb);
-#ifdef OUTPUT
-	write(STDOUT, STR_RB, sizeof(STR_RB) - 1);
-#endif
-}
-
-/* Do ra and rb at the same time. */
-
-void	rr(t_data *data)
-{
-	size_t		i;
-	t_element	last_val;
-	t_element	saved;
-
-	if (data->a.top >= 2)
-	{
-		last_val = data->a.content[0];
-		i = 1;
-		while (i < data->a.top)
-			swap_a(data, &last_val, &saved, &i);
-		data->a.content[0] = last_val;
-	}
-	write(STDOUT, STR_RR, sizeof(STR_RR) - 1);
-	if (data->b.top < 2)
-		return ;
-	last_val = data->b.content[0];
-	i = 1;
-	while (i < data->b.top)
-		swap_b(data, &last_val, &saved, &i);
-	data->b.content[0] = last_val;
-	data->nbr++;
+	if (!add_instruction(data, rb))
+		exit(throw_error(data));
 }

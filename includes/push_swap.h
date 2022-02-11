@@ -13,10 +13,11 @@
 
 # include <stddef.h>
 # include "libft.h"
+#include <assert.h>
 
 # define STR_ERROR "Error\n"
 
-//# define OUTPUT 1
+// # define OUTPUT 1
 
 # define STR_RA "ra\n"
 # define STR_RB "rb\n"
@@ -49,27 +50,23 @@ typedef struct s_data
 {
 	t_stack	a;
 	t_stack	b;
-	size_t	nbr;
-	size_t	nbr2;
-	t_list	*instructions;
+	t_list	*insts;
 }				t_data;
 
-typedef void (*t_instruction)(t_data *);
+typedef void (*t_inst)(t_data *);
 
 typedef struct s_move
 {
-	t_index			idx;
-	t_instruction	instruction_b;
-	size_t			times_b;
-	t_instruction	instruction;
-	size_t			times;
-
-	t_instruction	stack_a_inst;
-	size_t			stack_a_inst_rpt;
-	t_instruction	stack_b_inst;
-	size_t			stack_b_inst_rpt;
-	t_bool			after_push;
+	t_inst	stack_a_inst;
+	size_t	stack_a_inst_rpt;
+	t_inst	stack_b_inst;
+	size_t	stack_b_inst_rpt;
+	t_bool	do_inst_after_push;
 }				t_move;
+
+/* main.c */
+
+int	throw_error(t_data *data);
 
 /* stack.c */
 
@@ -81,23 +78,40 @@ void	free_stacks(t_data *data);
 /* sort/sort_helper.c */
 
 void	sort_three_elem_stack(t_data *data);
+void	sort_small_stack(t_data *data, int argc);
+void	do_op(t_data *data, t_inst inst, size_t rpt);
 
 /* sort/sort_init.c */
 
 void	index_stack(t_stack *stack);
 void	init_stacks(t_data *data);
 
+/* sort/sort_utils.c */
+
+t_index	find_biggest_in_stack(t_stack stack);
+t_index	find_smallest_in_stack(t_stack stack);
+t_bool	is_biggest(t_stack stack, t_element to_push);
+t_bool	is_in_between(int range_a, int range_b, int nbr);
+
+/* sort/sort_element.c */
+
+void	move_element_to_stack_a_top(t_data *data, t_move *move, t_index idx);
+void	move_element_to_stack_b_top(t_data *data, t_move *move, t_index idx);
+void	move_element_to_stack_a_bottom(t_data *data, t_move *move, t_index idx);
+
+/* sort/sort_algorithm.c */
+
+void	do_sort(t_data *data);
+
 /* rotate.c */
 
 void	rb(t_data *data);
 void	ra(t_data *data);
-void	rr(t_data *data);
 
 /* reverse_rotate.c */
 
 void	rra(t_data *data);
 void	rrb(t_data *data);
-void	rrr(t_data *data);
 
 /* push.c */
 
@@ -108,7 +122,6 @@ void	pb(t_data *data);
 
 void	sa(t_data *data);
 void	sb(t_data *data);
-void	ss(t_data *data);
 
 /* debug_tools.c */
 
@@ -120,17 +133,14 @@ int		fill_stack_from_args(t_stack *stack, int argc, char **argv);
 
 /* instructions.c */
 
-
-void	launch_instructions(t_data *data);
-t_list	*add_instruction(t_data *data, t_instruction instruction);
+void	print_instructions(t_data *data);
+t_list	*add_instruction(t_data *data, t_inst inst);
 
 /* Recurrent functions. */
 
 static inline void	push(t_stack *stack, t_element elem)
 {
-	stack->content[stack->top].value = elem.value;
-	stack->content[stack->top].sort_idx = elem.sort_idx;
-	stack->top++;
+	stack->content[stack->top++] = elem;
 }
 
 static inline t_element	pop(t_stack *stack)

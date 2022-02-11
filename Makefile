@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/10 19:15:57 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/11 17:29:19 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,19 +18,22 @@ OBJS_DIR	=	objs
 
 LIBFT_DIR	=	libft
 
-SRCS		=	main.c						\
-				parsing.c					\
-				stack.c						\
-				debug_tools.c				\
-				instructions.c				\
-				sort/sort_helper.c			\
-				sort/sort_utils.c			\
-				sort/sort_init.c			\
-				sort/move_element.c			\
-				operations/rotate.c			\
-				operations/reverse_rotate.c	\
-				operations/push.c			\
-				operations/swap.c
+SRCS		=	program/main.c						\
+				program/parsing.c					\
+				program/stack.c						\
+				program/debug_tools.c				\
+				program/instructions.c				\
+				program/sort/sort_helper.c			\
+				program/sort/sort_utils.c			\
+				program/sort/sort_init.c			\
+				program/sort/sort_algorithm.c		\
+				program/sort/move_element.c			\
+				program/operations/rotate.c			\
+				program/operations/reverse_rotate.c	\
+				program/operations/push.c			\
+				program/operations/swap.c
+
+#CHECKER_SRCS=	
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
@@ -40,7 +43,9 @@ RM			=	rm -rf
 
 CC			=	cc
 
-CFLAGS		=	-g3 -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
+DEBUG		=	-g3 -fsanitize=address
+
+CFLAGS		=	$(DEBUG) -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
 
 CLIBS		=	-L . -lft
 
