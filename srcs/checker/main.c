@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 19:57:11 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 20:12:25 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 		{
 			inst = str_to_inst(line);
 			if (!inst)
-				return (throw_error_checker(&data, STR_KO));
+				return (throw_error_checker(&data, STR_ERROR));
 			inst(&data);
 		}
 		if (!is_stack_sorted(data.a))
