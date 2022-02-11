@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:16 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 16:19:28 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:24:42 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * care of the job.
  */
 
-static void insert_extreme_elem(t_data *data, t_move *move, t_element to_push)
+static void	insert_extreme_elem(t_data *data, t_move *move, t_element to_push)
 {
 	t_index	extreme_idx;
 
@@ -86,9 +86,8 @@ static t_move	find_best_move(t_data *data)
 		curr_move.do_inst_after_push = FALSE;
 		move_element_to_stack_b_top(data, &curr_move, i);
 		insert_elem_in_stack_a(data, &curr_move, data->b.content[i]);
-
 		if ((curr_move.stack_a_inst_rpt + curr_move.stack_b_inst_rpt)
-				< (best_move.stack_a_inst_rpt + best_move.stack_b_inst_rpt))
+			< (best_move.stack_a_inst_rpt + best_move.stack_b_inst_rpt))
 			best_move = curr_move;
 		i--;
 	}

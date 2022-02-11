@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 01:18:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 17:51:08 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:23:47 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ static inline t_bool	less_than(t_data *data, t_index idx1, t_index idx2)
 void	sort_three_elem_stack(t_data *data)
 {
 	if (bigger_than(data, 2, 1) && less_than(data, 1, 0)
-			&& less_than(data, 0, 2))
+		&& less_than(data, 0, 2))
 		ra(data);
 	else if (bigger_than(data, 2, 1) && bigger_than(data, 1, 0)
-			&& less_than(data, 0, 2))
+		&& less_than(data, 0, 2))
 	{
 		sa(data);
 		rra(data);
 	}
 	else if (bigger_than(data, 2, 1) && less_than(data, 1, 0)
-			&& bigger_than(data, 0, 2))
+		&& bigger_than(data, 0, 2))
 		sa(data);
 	else if (less_than(data, 2, 1) && bigger_than(data, 1, 0)
-			&& less_than(data, 0, 2))
+		&& less_than(data, 0, 2))
 		rra(data);
 	else if (less_than(data, 2, 1) && bigger_than(data, 1, 0)
-			&& bigger_than(data, 0, 2))
+		&& bigger_than(data, 0, 2))
 	{
 		rra(data);
 		sa(data);

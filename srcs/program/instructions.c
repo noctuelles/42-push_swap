@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:25:18 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 17:08:41 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:19:52 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_instructions(t_data *data)
 		if (elem->next)
 		{
 			next_inst = (t_inst) elem->next->content;
-			if(multiple_inst(current_inst, next_inst))
+			if (multiple_inst(current_inst, next_inst))
 				elem = elem->next->next;
 			else
 			{

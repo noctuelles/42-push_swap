@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_swap_helper.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 13:45:10 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 18:20:45 by plouvel          ###   ########.fr       */
+/*   Created: 2022/02/11 18:09:59 by plouvel           #+#    #+#             */
+/*   Updated: 2022/02/11 18:15:43 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "push_swap_helper.h"
-#include <stdlib.h>
+#ifndef PUSH_SWAP_HELPER_H
+# define PUSH_SWAP_HELPER_H
 
-void	pa(t_data *data)
+/* Recurrent functions. */
+
+static inline void	push(t_stack *stack, t_element elem)
 {
-	if (data->b.top < 1)
-		return ;
-	push(&data->a, pop(&data->b));
-	if (!add_instruction(data, pa))
-		exit(throw_error(data));
+	stack->content[stack->top++] = elem;
 }
 
-void	pb(t_data *data)
+static inline t_element	pop(t_stack *stack)
 {
-	if (data->a.top < 1)
-		return ;
-	push(&data->b, pop(&data->a));
-	if (!add_instruction(data, pb))
-		exit(throw_error(data));
+	t_element	empty;
+
+	if (stack->top != 0)
+		return (stack->content[stack->top-- - 1]);
+	ft_memset(&empty, 0, sizeof(t_element));
+	return (empty);
 }
+
+#endif

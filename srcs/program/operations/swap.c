@@ -6,12 +6,12 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:47:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 17:07:08 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:20:27 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
-# include <stdlib.h>
+#include "push_swap.h"
+#include <stdlib.h>
 
 void	sa(t_data *data)
 {

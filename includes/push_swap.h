@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 13:39:55 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/09 17:06:07 by plouvel          ###   ########.fr       */
+/*   Created: 2022/02/11 18:11:41 by plouvel           #+#    #+#             */
+/*   Updated: 2022/02/11 18:15:44 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stddef.h>
 # include "libft.h"
-#include <assert.h>
 
 # define STR_ERROR "Error\n"
-
-// # define OUTPUT 1
 
 # define STR_RA "ra\n"
 # define STR_RB "rb\n"
@@ -43,7 +42,7 @@ typedef struct s_element
 typedef struct s_stack
 {
 	t_element	*content;
-	t_index			top;
+	t_index		top;
 }				t_stack;
 
 typedef struct s_data
@@ -53,7 +52,7 @@ typedef struct s_data
 	t_list	*insts;
 }				t_data;
 
-typedef void (*t_inst)(t_data *);
+typedef void	(*t_inst)(t_data *);
 
 typedef struct s_move
 {
@@ -66,7 +65,7 @@ typedef struct s_move
 
 /* main.c */
 
-int	throw_error(t_data *data);
+int		throw_error(t_data *data);
 
 /* stack.c */
 
@@ -135,22 +134,5 @@ int		fill_stack_from_args(t_stack *stack, int argc, char **argv);
 
 void	print_instructions(t_data *data);
 t_list	*add_instruction(t_data *data, t_inst inst);
-
-/* Recurrent functions. */
-
-static inline void	push(t_stack *stack, t_element elem)
-{
-	stack->content[stack->top++] = elem;
-}
-
-static inline t_element	pop(t_stack *stack)
-{
-	t_element	empty;
-
-	if (stack->top != 0)
-		return(stack->content[stack->top-- - 1]);
-	ft_memset(&empty, 0, sizeof(t_element));
-	return (empty);
-}
 
 #endif

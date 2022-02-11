@@ -6,17 +6,18 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 18:02:36 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:18:56 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "push_swap_helper.h"
 #include "libft.h"
 
 /* get_int_weight() returns how many digits they are in a number.
  * it adds one if the number is negative.
  * So -12 gives 3 end result in get_int_digits function.
- * 12 gives 2 end result in get_int_digits function. */ 
+ * 12 gives 2 end result in get_int_digits function. */
 
 static inline size_t	get_int_digits(int i)
 {
@@ -44,7 +45,7 @@ static inline size_t	get_int_digits(int i)
 
 static size_t	ft_strlen_skip_beg_zero(const char *str)
 {
-	size_t	i;
+	t_index	i;
 	size_t	len_no_zero;
 
 	i = 0;
@@ -87,15 +88,15 @@ static inline int	*is_integer(const char *str, int *i)
 
 int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 {
-	size_t	n;
+	t_index		i;
 	t_element	elem;
 
-	n = argc;
-	while (n > 1)
+	i = argc;
+	while (i > 1)
 	{
-		elem.value = ft_atoi(argv[n - 1]);
+		elem.value = ft_atoi(argv[i - 1]);
 		elem.sort_idx = 0;
-		if (is_integer((const char *) argv[n - 1], &elem.value))
+		if (is_integer((const char *) argv[i - 1], &elem.value))
 		{
 			if (!check_stack_duplicate(*stack, elem.value))
 				push(stack, elem);
@@ -104,7 +105,7 @@ int	fill_stack_from_args(t_stack *stack, int argc, char **argv)
 		}
 		else
 			return (-1);
-		n--;
+		i--;
 	}
 	return (0);
 }

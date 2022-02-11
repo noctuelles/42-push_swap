@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/11 17:29:19 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/11 18:08:36 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ CC			=	cc
 
 DEBUG		=	-g3 -fsanitize=address
 
-CFLAGS		=	$(DEBUG) -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
+CFLAGS		=	-Wall -Werror -Wextra $(DEBUG) -I $(INC_DIR) -I $(LIBFT_DIR)/$(INC_DIR)
 
 CLIBS		=	-L . -lft
 

@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:41:56 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 16:52:54 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:22:23 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /* These two inline function are only here to comply with the norms. */
 
-static inline void swap_a(t_data *data, t_element *last_val, t_element *saved,
-																	size_t *i)
+static inline void	swap_a(t_data *data, t_element *last_val, t_element *saved,
+																	t_sindex *i)
 {
 	*saved = data->a.content[*i];
 	data->a.content[*i] = *last_val;
@@ -24,8 +24,8 @@ static inline void swap_a(t_data *data, t_element *last_val, t_element *saved,
 	(*i)++;
 }
 
-static inline void swap_b(t_data *data, t_element *last_val, t_element *saved,
-																	size_t *i)
+static inline void	swap_b(t_data *data, t_element *last_val, t_element *saved,
+																	t_sindex *i)
 {
 	*saved = data->b.content[*i];
 	data->b.content[*i] = *last_val;
@@ -38,7 +38,7 @@ static inline void swap_b(t_data *data, t_element *last_val, t_element *saved,
 
 void	ra(t_data *data)
 {
-	size_t		i;
+	t_index		i;
 	t_element	last_val;
 	t_element	saved;
 
@@ -58,7 +58,7 @@ void	ra(t_data *data)
 
 void	rb(t_data *data)
 {
-	size_t		i;
+	t_index		i;
 	t_element	last_val;
 	t_element	saved;
 

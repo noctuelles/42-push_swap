@@ -6,17 +6,11 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 17:52:50 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:17:37 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include "ft_printf.h"
-#include "libft.h"
 #include "push_swap.h"
-#include "libft.h"
-#include "get_next_line.h"
 
 int	throw_error(t_data *data)
 {
@@ -26,8 +20,6 @@ int	throw_error(t_data *data)
 	return (1);
 }
 
-#include <stdio.h>
-
 /* Returns what you must do in order to have the stack A ready to welcome the
  * element to push. */
 
@@ -35,24 +27,27 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	ft_memset(&data, 0, sizeof(t_data));
-	if (!alloc_stack(&data.a, argc - 1) || !alloc_stack(&data.b, argc - 1))
-		return (throw_error(&data));
-	if (fill_stack_from_args(&data.a, argc, argv) == -1)
-		return (throw_error(&data));
-	if (!is_stack_sorted(data.a))
+	if (argc > 2)
 	{
-		index_stack(&data.a);
-		if (argc <= 4)
-			sort_small_stack(&data, argc);
-		else
+		ft_memset(&data, 0, sizeof(t_data));
+		if (!alloc_stack(&data.a, argc - 1) || !alloc_stack(&data.b, argc - 1))
+			return (throw_error(&data));
+		if (fill_stack_from_args(&data.a, argc, argv) == -1)
+			return (throw_error(&data));
+		if (!is_stack_sorted(data.a))
 		{
-			init_stacks(&data);
-			do_sort(&data);
+			index_stack(&data.a);
+			if (argc <= 4)
+				sort_small_stack(&data, argc);
+			else
+			{
+				init_stacks(&data);
+				do_sort(&data);
+			}
+			print_instructions(&data);
 		}
-		print_instructions(&data);
+		free_stacks(&data);
+		ft_lstclear_nocnt_alloc(&data.insts);
 	}
-	free_stacks(&data);
-	ft_lstclear_nocnt_alloc(&data.insts);
 	return (0);
 }

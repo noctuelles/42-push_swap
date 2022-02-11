@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:00:09 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 16:19:33 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:24:32 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* find_biggest_in_stack() finds the biggest element of in the stack specified
  * and returns his index.
- * find_smallest_in_a() finds the ..... and returns his index.*/ 
+ * find_smallest_in_a() finds the ..... and returns his index.*/
 
 t_index	find_biggest_in_stack(t_stack stack)
 {
@@ -76,7 +76,8 @@ t_bool	is_biggest(t_stack stack, t_element to_push)
 }
 
 /* is_in_beetween() check if the integer nbr is in the range a-b.
- * In other words, it checks if the assertion range_a < nbr < range_b is true.*/
+ * In other words, it checks if the assertion range_a < nbr < range_b is true.
+ * */
 
 t_bool	is_in_between(int range_a, int range_b, int nbr)
 {

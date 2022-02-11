@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 16:31:50 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 18:19:35 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "libft.h"
 #include <stdlib.h>
 
-t_stack	*alloc_stack(t_stack *stack, size_t stack_size) {
+t_stack	*alloc_stack(t_stack *stack, size_t stack_size)
+{
 	stack->content = (t_element *) ft_calloc(stack_size, sizeof(t_element));
 	if (!stack->content)
 		return (NULL);
@@ -25,7 +26,7 @@ t_stack	*alloc_stack(t_stack *stack, size_t stack_size) {
 /* check_stack_duplicate() Perform a sentry linear search on the stack to check
  * if a duplicate has been found. */
 
-int		check_stack_duplicate(t_stack stack, int nbr)
+int	check_stack_duplicate(t_stack stack, int nbr)
 {
 	size_t	i;
 	int		save;
