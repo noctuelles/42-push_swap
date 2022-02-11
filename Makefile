@@ -6,7 +6,7 @@
 #    By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 16:37:49 by plouvel           #+#    #+#              #
-#    Updated: 2022/02/11 18:39:55 by plouvel          ###   ########.fr        #
+#    Updated: 2022/02/11 19:57:36 by plouvel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,21 @@ SRCS		=	program/main.c						\
 				program/operations/push.c			\
 				program/operations/swap.c
 
-#CHECKER_SRCS=	
+SRCS_CHECKER=	checker/main.c						\
+				program/parsing.c					\
+				program/stack.c						\
+				checker/operations/rotate.c			\
+				checker/operations/reverse_rotate.c	\
+				checker/operations/push.c			\
+				checker/operations/swap.c
 
 OBJS		=	$(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
+OBJS_CHECKER=	$(addprefix $(OBJS_DIR)/, $(SRCS_CHECKER:.c=.o))
+
 NAME		=	push_swap
+
+NAME_CHECKER=	checker
 
 RM			=	rm -rf
 
@@ -69,7 +79,13 @@ clean:
 fclean:			clean
 				$(RM) $(LIBFT)
 				$(RM) $(NAME)
+				$(RM) $(NAME_CHECKER)
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+checker:		$(LIBFT) $(OBJS_CHECKER)
+				$(CC) $(OBJS_CHECKER) $(CFLAGS) $(CLIBS) -o $(NAME_CHECKER)
+
+bonus:			checker
+
+.PHONY:			all clean fclean re bonus

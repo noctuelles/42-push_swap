@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:11:41 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 18:15:44 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/11 19:23:41 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "libft.h"
 
 # define STR_ERROR "Error\n"
+
+# define STR_OK "OK\n"
+# define STR_KO "KO\n"
 
 # define STR_RA "ra\n"
 # define STR_RB "rb\n"
@@ -106,11 +109,13 @@ void	do_sort(t_data *data);
 
 void	rb(t_data *data);
 void	ra(t_data *data);
+void	rr(t_data *data);
 
 /* reverse_rotate.c */
 
 void	rra(t_data *data);
 void	rrb(t_data *data);
+void	rrr(t_data *data);
 
 /* push.c */
 
@@ -121,6 +126,7 @@ void	pb(t_data *data);
 
 void	sa(t_data *data);
 void	sb(t_data *data);
+void	ss(t_data *data);
 
 /* debug_tools.c */
 
