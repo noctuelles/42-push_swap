@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 20:12:25 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:51:39 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ static int	throw_error_checker(t_data *data, const char *err_str)
 	else
 		ft_putstr(err_str);
 	free_stacks(data);
+	get_next_line(GNL_FLUSH);
 	return (1);
 }
 
-static t_inst	str_to_inst(const char *str)
+static t_inst	str_to_inst(char *str)
 {
 	if (ft_strcmp(str, STR_SA) == 0)
 		return (sa);
@@ -48,6 +49,7 @@ static t_inst	str_to_inst(const char *str)
 		return (rrb);
 	if (ft_strcmp(str, STR_RRR) == 0)
 		return (rrr);
+	free(str);
 	return (NULL);
 }
 
@@ -67,7 +69,6 @@ int	main(int argc, char **argv)
 	line = NULL;
 	if (argc > 1)
 	{
-		ft_memset(&data, 0, sizeof(t_data));
 		if (!alloc_stack(&data.a, argc - 1) || !alloc_stack(&data.b, argc - 1))
 			return (throw_error_checker(&data, STR_ERROR));
 		if (fill_stack_from_args(&data.a, argc, argv) == -1)
