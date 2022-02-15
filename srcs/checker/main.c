@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/15 18:51:39 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:54:10 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static t_inst	str_to_inst(char *str)
 
 static char	*get_line(char **line)
 {
-	free(*line);
 	*line = get_next_line(STDIN);
 	return (*line);
 }
