@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/15 18:54:10 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/16 21:20:18 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,28 @@ static t_inst	str_to_inst(char *str)
 {
 	if (ft_strcmp(str, STR_SA) == 0)
 		return (sa);
-	if (ft_strcmp(str, STR_SB) == 0)
+	else if (ft_strcmp(str, STR_SB) == 0)
 		return (sb);
-	if (ft_strcmp(str, STR_SS) == 0)
+	else if (ft_strcmp(str, STR_SS) == 0)
 		return (ss);
-	if (ft_strcmp(str, STR_PA) == 0)
+	else if (ft_strcmp(str, STR_PA) == 0)
 		return (pa);
-	if (ft_strcmp(str, STR_PB) == 0)
+	else if (ft_strcmp(str, STR_PB) == 0)
 		return (pb);
-	if (ft_strcmp(str, STR_RA) == 0)
+	else if (ft_strcmp(str, STR_RA) == 0)
 		return (ra);
-	if (ft_strcmp(str, STR_RB) == 0)
+	else if (ft_strcmp(str, STR_RB) == 0)
 		return (rb);
-	if (ft_strcmp(str, STR_RR) == 0)
+	else if (ft_strcmp(str, STR_RR) == 0)
 		return (rr);
-	if (ft_strcmp(str, STR_RRA) == 0)
+	else if (ft_strcmp(str, STR_RRA) == 0)
 		return (rra);
-	if (ft_strcmp(str, STR_RRB) == 0)
+	else if (ft_strcmp(str, STR_RRB) == 0)
 		return (rrb);
-	if (ft_strcmp(str, STR_RRR) == 0)
+	else if (ft_strcmp(str, STR_RRR) == 0)
 		return (rrr);
-	free(str);
-	return (NULL);
+	else
+		return (NULL);
 }
 
 static char	*get_line(char **line)
@@ -65,7 +65,6 @@ int	main(int argc, char **argv)
 	t_inst	inst;
 	char	*line;
 
-	line = NULL;
 	if (argc > 1)
 	{
 		if (!alloc_stack(&data.a, argc - 1) || !alloc_stack(&data.b, argc - 1))
@@ -75,6 +74,7 @@ int	main(int argc, char **argv)
 		while (get_line(&line))
 		{
 			inst = str_to_inst(line);
+			free(line);
 			if (!inst)
 				return (throw_error_checker(&data, STR_ERROR));
 			inst(&data);
