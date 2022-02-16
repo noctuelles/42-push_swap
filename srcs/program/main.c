@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 18:17:37 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/16 21:26:53 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	throw_error(t_data *data)
 	free_stacks(data);
 	return (1);
 }
-
-/* Returns what you must do in order to have the stack A ready to welcome the
- * element to push. */
 
 int	main(int argc, char **argv)
 {
