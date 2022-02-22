@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:47:47 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/17 10:33:33 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/22 12:54:52 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	sb(t_data *data)
 
 	if (data->b.top < 2)
 		return ;
-	tmp = data->b.content[data->a.top - 1];
-	data->b.content[data->b.top - 1] = data->a.content[data->b.top - 2];
+	tmp = data->b.content[data->b.top - 1];
+	data->b.content[data->b.top - 1] = data->b.content[data->b.top - 2];
 	data->b.content[data->b.top - 2] = tmp;
 	if (!add_instruction(data, sb))
 		exit(throw_error(data));
