@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:42:11 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/16 21:26:53 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:48:48 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (argc > 2)
+	if (argc > 1)
 	{
 		ft_memset(&data, 0, sizeof(t_data));
 		if (!alloc_stack(&data.a, argc - 1) || !alloc_stack(&data.b, argc - 1))

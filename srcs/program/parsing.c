@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:15:32 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 18:18:56 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:55:00 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ static size_t	ft_strlen_skip_beg_zero(const char *str)
 		i++;
 	while (str[i])
 	{
-		len_no_zero++;
+		if (ft_isdigit(str[i]))
+			len_no_zero++;
+		else
+			return (0);
 		i++;
 	}
 	return (len_no_zero);

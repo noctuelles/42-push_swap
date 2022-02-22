@@ -6,7 +6,7 @@
 /*   By: plouvel <plouvel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:12:57 by plouvel           #+#    #+#             */
-/*   Updated: 2022/02/11 20:12:23 by plouvel          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:48:25 by plouvel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_bool	is_stack_sorted(t_stack stack)
 	t_index	i;
 
 	i = stack.top;
+	if (i == 0)
+		return (FALSE);
 	while (i > 1)
 	{
 		if (stack.content[i - 1].value > stack.content[i - 2].value)
